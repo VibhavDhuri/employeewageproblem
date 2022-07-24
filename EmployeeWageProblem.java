@@ -4,18 +4,21 @@ public class EmployeeWageProblem {
 
 	public static void main(String[] args) {
 
-		final int fullTime = 1;
+		final int partTime = 1;
+		final int fullTime = 2;
 		final int wagePerHour = 20;
-		int empType = (int) (Math.random() * 100) % 2;
+		int empType = (int) (Math.random() * 100) % 3;
 		int workingHours = 0;
 		if (empType == fullTime) {
-			System.out.println("Employee is Present");
+			System.out.println("Employee is Present Full time.");
 			workingHours = 8;
+		} else if (empType == partTime) {
+			System.out.println("Employee is Present Part time.");
+			workingHours = 4;
 		} else {
-			System.out.println("Employee is Absent");
+			System.out.println("Employee is Absent.");
 		}
 		int wage = workingHours * wagePerHour;
-		System.out.println("Employee Daily Wage is " + wage);
+		System.out.println("Employee Daily Wage is " + wage + ".");
 	}
-
 }
