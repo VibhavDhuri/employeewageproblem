@@ -3,19 +3,21 @@ package employeewageproblem;
 public class EmployeeWageProblem {
 
 	public static void main(String[] args) {
-
 		final int partTime = 1;
 		final int fullTime = 2;
 		final int wagePerHour = 20;
 		int empType = (int) (Math.random() * 100) % 3;
 		int workingHours = 0;
-		if (empType == fullTime) {
+		switch (empType) {
+		case fullTime:
 			System.out.println("Employee is Present Full time.");
 			workingHours = 8;
-		} else if (empType == partTime) {
+			break;
+		case partTime:
 			System.out.println("Employee is Present Part time.");
 			workingHours = 4;
-		} else {
+			break;
+		default:
 			System.out.println("Employee is Absent.");
 		}
 		int wage = workingHours * wagePerHour;
