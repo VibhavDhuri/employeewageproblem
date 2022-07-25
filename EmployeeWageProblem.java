@@ -1,5 +1,7 @@
 package employeewageproblem;
 
+import java.util.ArrayList;
+
 interface IEmployeeWageProblem {
 	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
 
@@ -43,17 +45,15 @@ class EmployeeWageProblem implements IEmployeeWageProblem {
 	public static final int PART_TIME = 1;
 	public static final int FULL_TIME = 2;
 	// instance variables
-	int noOfCompanies, index;
-	CompanyEmpWage[] companies;
+	ArrayList<CompanyEmpWage> companies;
 
-	public EmployeeWageProblem(int noOfCompanies) {
-		this.noOfCompanies = noOfCompanies;
-		companies = new CompanyEmpWage[noOfCompanies];
-		index = 0;
+	public EmployeeWageProblem() {
+		companies = new ArrayList<>();
 	}
 
 	public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs) {
-		companies[index++] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+		CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+		companies.add(company);
 	}
 
 	int generateEmployeeType() {
@@ -97,10 +97,11 @@ class EmployeeWageProblem implements IEmployeeWageProblem {
 	}
 
 	public static void main(String args[]) {
-		EmployeeWageProblem EmployeeWageProblem = new EmployeeWageProblem(3);
+		EmployeeWageProblem EmployeeWageProblem = new EmployeeWageProblem();
 		EmployeeWageProblem.addCompany("Microsoft", 4, 30, 100);
 		EmployeeWageProblem.addCompany("Google", 5, 40, 170);
 		EmployeeWageProblem.addCompany("Apple", 9, 10, 70);
+		EmployeeWageProblem.addCompany("Amazon", 19, 10, 150);
 		EmployeeWageProblem.calculateTotalWage();
 	}
 }
